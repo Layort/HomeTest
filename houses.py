@@ -3,7 +3,7 @@ import time
 import random
 from rooms import room
 from sqlManage import SQLManagement
-
+from temperature import temperatureSimulator
 class house:
 
 	# roomDict    =   {
@@ -18,7 +18,7 @@ class house:
 	# }
 
 	# 初始化函数
-	def __init__(self, ID = -1, roomList = [], width = 20, height = 20):
+	def __init__(self, ID = -1, roomList = [], width = 30, height = 20,currentTime = time.mktime(time.strptime("2015 1 1 00:00:00", "%Y %m %d %H:%M:%S"))):
 		print('in __init__ of house')
 		self.ID       = ID
 		self.width    = width
@@ -26,7 +26,31 @@ class house:
 		self.roomList = []
 		self.createHouseStructure(roomList)
 		self.initRoomAndDevice()
+		# 时间
+		self.currentTime  =         currentTime
+		self.simT         =         temperatureSimulator(self.currentTime)
+		
+	#获取温度
+	def getSimT(self):
+		return self.simT
+	def iterateT(self, timeSlot):
+		self.simT.iterate(self.currentTime, timeSlot)
+		
+	# 时间迭代器迭代一次
+	def iterateTime(self, timeSlot):
+		self.currentTime = self.currentTime + timeSlot
 
+					
+	#获取当前时间
+	def getCurrentTime(self):
+		return self.currentTime
+	#格式化获取当前时间
+	def getCurrentTimeStr(self):
+		return time.strftime("%H:%M:%S", time.localtime(self.getCurrentTime()))
+	#设置当前时间
+	def setCurrentTime(self, currentTime):
+		self.currentTime = currentTime
+		
 	def getID(self):
 		return self.ID
 
@@ -44,69 +68,66 @@ class house:
 		print('in createHouseStructure')
 		self.roomList = []
 		roomNum = len(roomList)
+		i=0
 		for roomName in roomList:
-			flag = True
-			while(flag):
-				flag = False
-				tempPosX = random.randint(0, self.width  * 2/3 - 1)
-				tempPosY = random.randint(0, self.height * 2/3 - 1)
-				for tempRoom in self.roomList:
-					if (tempPosX == tempRoom.getLeft() and tempPosY == tempRoom.getTop()):
-						flag = True
-						break;
-			newRoom = room(-1, roomName, tempPosX, tempPosX, tempPosY, tempPosY)
+			tempPosX =  self.width//(roomNum)
+			tempPosY =  self.height
+			newRoom = room(-1, roomName, i*tempPosX, (i+1)*tempPosX,0, tempPosY)#, 0)
+			i+=1
 			self.roomList.append(newRoom)
 
 		# print('end of seed create')
 
-		endFlag = False
-		while(not endFlag):
-			endFlag = True
-			for tempRoom in self.roomList:
-				# right add
-				flag       = True
-				newRight   = tempRoom.getRight() + 1
-				if(newRight >= self.width):
-					flag = False
-				for tempY in range(tempRoom.getTop(), tempRoom.getBottom() + 1):
-					for existRoom in self.roomList:
-						if(existRoom.isInRoom(newRight,tempY)):
-							flag = False
-							break;
-						if(newRight-tempRoom.getLeft()>self.width/3):
-							flag = False
-							break;
-					if(flag == False):
-						break;
-				if(flag):
-					tempRoom.setRight(newRight)
-					endFlag = False
-				# bottom add
-				flag      = True
-				newBottom = tempRoom.getBottom() + 1 
-				if(newBottom >= self.height):
-					flag = False
-				for tempX in range(tempRoom.getLeft(), tempRoom.getRight()+1):
-					for existRoom in self.roomList:
-						if(existRoom.isInRoom(tempX, newBottom)):
-							flag = False
-							break;
-						if(newBottom - tempRoom.getTop() > self.height/3):
-							flag = False
-							break;
-					if(flag == False):
-						break;
-				if(flag):
-					tempRoom.setBottom(newBottom)
-					endFlag = False
-			# print('loop')
-
-		flag = True
-		for tempRoom in self.roomList:
-			if ( tempRoom.getSquare() <  (self.height * self.width)/roomNum/4):
-				flag = False
-		if (not flag):
-			self.createHouseStructure(roomList)
+# =============================================================================
+# 		endFlag = False
+# 		while(not endFlag):
+# 			endFlag = True
+# 			for tempRoom in self.roomList:
+# 				# right add
+# 				flag       = True
+# 				newRight   = tempRoom.getRight() + 1
+# 				if(newRight >= self.width):
+# 					flag = False
+# 				for tempY in range(tempRoom.getTop(), tempRoom.getBottom() + 1):
+# 					for existRoom in self.roomList:
+# 						if(existRoom.isInRoom(newRight,tempY)):
+# 							flag = False
+# 							break;
+# 						if(newRight-tempRoom.getLeft()>self.width/3):
+# 							flag = False
+# 							break;
+# 					if(flag == False):
+# 						break;
+# 				if(flag):
+# 					tempRoom.setRight(newRight)
+# 					endFlag = False
+# 				# bottom add
+# 				flag      = True
+# 				newBottom = tempRoom.getBottom() + 1 
+# 				if(newBottom >= self.height):
+# 					flag = False
+# 				for tempX in range(tempRoom.getLeft(), tempRoom.getRight()+1):
+# 					for existRoom in self.roomList:
+# 						if(existRoom.isInRoom(tempX, newBottom)):
+# 							flag = False
+# 							break;
+# 						if(newBottom - tempRoom.getTop() > self.height/3):
+# 							flag = False
+# 							break;
+# 					if(flag == False):
+# 						break;
+# 				if(flag):
+# 					tempRoom.setBottom(newBottom)
+# 					endFlag = False
+# 			# print('loop')
+# 
+# 		flag = True
+# 		for tempRoom in self.roomList:
+# 			if ( tempRoom.getSquare() <  (self.height * self.width)/roomNum/4):
+# 				flag = False
+# 		if (not flag):
+# 			self.createHouseStructure(roomList)
+# =============================================================================
 
 	# 为各房间添加设备
 	def initRoomAndDevice(self):
@@ -333,3 +354,7 @@ class house:
 		for tempRoom in self.roomList:
 			res = dict(res.items() + tempRoom.getInfo(currentTime).items())
 		return res
+
+
+	def setCurrentTime(self, currentTime):
+		self.currentTime = currentTime
