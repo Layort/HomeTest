@@ -156,7 +156,7 @@ def enviromentEventDispatch(man):
 		if( len(queues[man.getID()]) == 0 ):
 			percent = timeSlot * 1.0 / ( random.randint(20,50) * 60) * man.getVigour()
 			if (random.uniform(0,100) < percent):
-				randomEventList = [ 'defaultEvent'] #待添加 TODO
+				randomEventList = [ 'defaultEvent','playVideoGame','readBookStart'] #待添加 TODO
 				eventNum = random.randint(0, len(randomEventList)-1)
 				newEvent = event(man.getCurrentTime(), randomEventList[eventNum])
 				queues[man.getID()].append(newEvent)

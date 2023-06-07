@@ -49,7 +49,7 @@ class device:
 		self.ID          =  -1
 		self.imageOn     =  pygame.image.load('./pic/' + self.getType() + '_on.png')
 		self.imageOff    =  pygame.image.load('./pic/' + self.getType() + '_off.png')
-		self.ownerList	 = ownerID
+		self.ownerID	 = ownerID
 
 
 	def getCode(self):
@@ -340,4 +340,4 @@ class device:
 
 	# 获取设备的所有者
 	def getOwner(self):
-		return 
+		return self.ownerID

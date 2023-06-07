@@ -96,73 +96,84 @@ class room:
         #dormitory
 		if (self.roomType == 'dormitory'):
             #小爱音箱*5
-			dormitoryXiaoaiAudio1 = device(1001, 'dormitoryXiaoaiAudio1', 'voice_assistant', 0, 0, 0, 3,0)
+			dormitoryXiaoaiAudio1 = device(1001, 'dormitoryXiaoaiAudio1', 'voice_assistant', 0, 0, 0, 3, 0, 0)
 			self.deviceList.append(dormitoryXiaoaiAudio1)
-			dormitoryXiaoaiAudio2 = device(1002, 'dormitoryXiaoaiAudio2', 'voice_assistant', 0, 0, 0, 9,1)
+			dormitoryXiaoaiAudio2 = device(1002, 'dormitoryXiaoaiAudio2', 'voice_assistant', 0, 0, 0, 9, 1, 1)
 			self.deviceList.append(dormitoryXiaoaiAudio2)
-			dormitoryXiaoaiAudio3 = device(1003, 'dormitoryXiaoaiAudio3', 'voice_assistant', 0, 0, 0, 17,2)
+			dormitoryXiaoaiAudio3 = device(1003, 'dormitoryXiaoaiAudio3', 'voice_assistant', 0, 0, 0, 17, 2, 2)
 			self.deviceList.append(dormitoryXiaoaiAudio3)
-			dormitoryXiaoaiAudio4 = device(1004, 'dormitoryXiaoaiAudio4', 'voice_assistant', 0, 0, 7, 9,3)
+			dormitoryXiaoaiAudio4 = device(1004, 'dormitoryXiaoaiAudio4', 'voice_assistant', 0, 0, 7, 9, 3, 3)
 			self.deviceList.append(dormitoryXiaoaiAudio4)
-			dormitoryXiaoaiAudio5 = device(1005, 'dormitoryXiaoaiAudio5', 'voice_assistant', 0, 0, 7, 17,4)
+			dormitoryXiaoaiAudio5 = device(1005, 'dormitoryXiaoaiAudio5', 'voice_assistant', 0, 0, 7, 17, 4, 4)
 			self.deviceList.append(dormitoryXiaoaiAudio5)
             #蓝牙温湿度计
-			dormitoryThermometer = device(1006, 'dormitoryThermometer', 'thermometer', 0, 0, 7, 3,-1)
+			dormitoryThermometer = device(1006, 'dormitoryThermometer', 'thermometer', 0, 0, 7, 3, -1, -1)
 			self.deviceList.append(dormitoryThermometer)
             #摄像机
 			dormitoryCamere1 = device(1007, 'dormitoryCamere1', 'camere', 0, 0,3,0,-1)
 			self.deviceList.append(dormitoryCamere1)
             #门窗传感器*3
-			dormitoryDoorWindowSensor1 = device(1008, 'dormitoryDoorWindowSensor1', 'sensor', 0, 0,0,0,-1)
+			dormitoryDoorWindowSensor1 = device(1008, 'dormitoryDoorWindowSensor1', 'sensor', 0, 0,0,0, -1, -1)
 			self.deviceList.append(dormitoryDoorWindowSensor1)
-			dormitoryDoorWindowSensor2 = device(1009, 'dormitoryDoorWindowSensor2', 'sensor', 0, 0,1,21,-1)
+			dormitoryDoorWindowSensor2 = device(1009, 'dormitoryDoorWindowSensor2', 'sensor', 0, 0,1,21, -1, -1)
 			self.deviceList.append(dormitoryDoorWindowSensor2)
-			dormitoryDoorWindowSensor3 = device(1010, 'dormitoryDoorWindowSensor3', 'sensor', 0, 0,5,21,-1)
+			dormitoryDoorWindowSensor3 = device(1010, 'dormitoryDoorWindowSensor3', 'sensor', 0, 0,5,21, -1, -1)
 			self.deviceList.append(dormitoryDoorWindowSensor3)
             #人体移动传感器
-			dormitoryHumanSensor = device(1011, 'dormitoryHumanSensor1', 'sensor', 0, 0,2,0,-1)
+			dormitoryHumanSensor = device(1011, 'dormitoryHumanSensor1', 'sensor', 0, 0, 2, 0, -1, -1)
 			self.deviceList.append(dormitoryHumanSensor) 
             #三开关单控开关
-			dormitoryThreeSwitch = device(1012, 'dormitoryThreeSwitch', 'switch', 0, 0,5,0,-1)
+			dormitoryThreeSwitch = device(1012, 'dormitoryThreeSwitch', 'switch', 0, 0, 5, 0, -1, -1)
 			self.deviceList.append(dormitoryThreeSwitch)
             #窗帘伴侣
-			dormitoryCurtainCompanion = device(1013, 'dormitoryCurtainCompanion', 'switch', 0, 0,7,0,-1)
+			dormitoryCurtainCompanion = device(1013, 'dormitoryCurtainCompanion', 'switch', 0, 0, 7, 0, -1)
 			self.deviceList.append(dormitoryCurtainCompanion)
             #智能插座*5
-			dormitorySmartSocket1 = device(1014, 'dormitorySmartSocket1', 'socket', 0, 0, 0, 4,0)
+			dormitorySmartSocket1 = device(1014, 'dormitorySmartSocket1', 'socket', 0, 0, 0, 4, 0, 0)
 			self.deviceList.append(dormitorySmartSocket1)
-			dormitorySmartSocket2 = device(1015, 'dormitorySmartSocket2', 'socket', 0, 0, 0, 10,0)
+			dormitorySmartSocket2 = device(1015, 'dormitorySmartSocket2', 'socket', 0, 0, 0, 10, 1, 1)
 			self.deviceList.append(dormitorySmartSocket2) 
-			dormitorySmartSocket3 = device(1016, 'dormitorySmartSocket3', 'socket', 0, 0, 0, 18,0)
+			dormitorySmartSocket3 = device(1016, 'dormitorySmartSocket3', 'socket', 0, 0, 0, 18, 2, 2)
 			self.deviceList.append(dormitorySmartSocket3)
-			dormitorySmartSocket4 = device(1017, 'dormitorySmartSocket4', 'socket', 0, 0, 7, 10,0)
+			dormitorySmartSocket4 = device(1017, 'dormitorySmartSocket4', 'socket', 0, 0, 7, 10, 3, 3)
 			self.deviceList.append(dormitorySmartSocket4)
-			dormitorySmartSocket5 = device(1018, 'dormitorySmartSocket5', 'socket', 0, 0, 7, 18,0)
+			dormitorySmartSocket5 = device(1018, 'dormitorySmartSocket5', 'socket', 0, 0, 7, 18, 4, 4)
 			self.deviceList.append(dormitorySmartSocket5)
 			#寝室门
-			dormitoryDoor =  device(1019, 'dormitoryDoor', 'door', 0, 0,1,0,-1)
+			dormitoryDoor =  device(1019, 'dormitoryDoor', 'door', 0, 0, 1, 0, -1, -1)
 			self.deviceList.append(dormitoryDoor)
 			#寝室窗
-			dormitoryWindow1 =  device(1020, 'dormitoryWindow1', 'window', 0, 0,2,21,-1)
+			dormitoryWindow1 =  device(1020, 'dormitoryWindow1', 'window', 0, 0, 2, 21, -1, -1)
 			self.deviceList.append(dormitoryWindow1)
-			dormitoryWindow2 =  device(1021, 'dormitoryWindow2', 'window', 0, 0,4,21,-1)
+			dormitoryWindow2 =  device(1021, 'dormitoryWindow2', 'window', 0, 0, 4, 21, -1, -1)
 			self.deviceList.append(dormitoryWindow2)
             #寝室空调
-			dormitoryAircondition = device(1022, 'dormitoryAircondition', 'airCondition', 0, 0,3,20,-1)
+			dormitoryAircondition = device(1022, 'dormitoryAircondition', 'airCondition', 0, 0, 3, 20, -1, -1)
 			self.deviceList.append(dormitoryAircondition)
 			#寝室灯
-			dormitoryLamp = device(1023, 'dormitoryLampOfAll', 'lamp',0,0,3,9,-1)
+			dormitoryLamp = device(1023, 'dormitoryLampOfAll', 'lamp', 0, 0, 3, 9, 0, -1)
 			self.deviceList.append(dormitoryLamp)
+			#个人台灯*5
+			dormitoryLamp1 = device(1024, 'dormitoryLamp1', 'lamp', 0, 0, 0, 2, 1, 0)
+			self.deviceList.append(dormitoryLamp1)
+			dormitoryLamp2 = device(1025, 'dormitoryLamp2', 'lamp', 0, 0, 0, 8, 2, 1)
+			self.deviceList.append(dormitoryLamp2)
+			dormitoryLamp3 = device(1026, 'dormitoryLamp3', 'lamp', 0, 0, 0, 16, 3, 2)
+			self.deviceList.append(dormitoryLamp3)
+			dormitoryLamp4 = device(1027, 'dormitoryLamp4', 'lamp', 0, 0, 7, 8, 4, 3)
+			self.deviceList.append(dormitoryLamp4)
+			dormitoryLamp5 = device(1028, 'dormitoryLamp5', 'lamp', 0, 0, 7, 16, 5, 4)
+			self.deviceList.append(dormitoryLamp5)
 			#电脑*5
-			dormitoryComputer1 = device(1024, 'dormitoryComputer1', 'computer',0,0,1,3,-1)
+			dormitoryComputer1 = device(1029, 'dormitoryComputer1', 'computer', 0, 0, 1, 3, 0, 0)
 			self.deviceList.append(dormitoryComputer1)
-			dormitoryComputer2 = device(1025, 'dormitoryComputer2', 'computer',0,0,1,9,-1)
+			dormitoryComputer2 = device(1030, 'dormitoryComputer2', 'computer', 0, 0, 1, 9, 1, 1)
 			self.deviceList.append(dormitoryComputer2)
-			dormitoryComputer3 = device(1026, 'dormitoryComputer3', 'computer',0,0,1,17,-1)
+			dormitoryComputer3 = device(1031, 'dormitoryComputer3', 'computer', 0, 0, 1, 17, 2, 2)
 			self.deviceList.append(dormitoryComputer3)
-			dormitoryComputer4 = device(1027, 'dormitoryComputer4', 'computer',0,0,6,9,-1)
+			dormitoryComputer4 = device(1032, 'dormitoryComputer4', 'computer', 0, 0, 6, 9, 3, 3)
 			self.deviceList.append(dormitoryComputer4)
-			dormitoryComputer5 = device(1028, 'dormitoryComputer5', 'computer',0,0,6,17,-1)
+			dormitoryComputer5 = device(1033, 'dormitoryComputer5', 'computer', 0, 0, 6, 17, 4, 4)
 			self.deviceList.append(dormitoryComputer5)
 
 
@@ -228,18 +239,19 @@ class room:
     
 	# 根据类型和拥有者来打开设备，返回设备
 	def turnOnDeviceByTypeAndOwner(self,  deviceType, OwnerID):
+		tempDeviceList = []
 		for tempDevice in self.deviceList:
-			if( tempDevice.getType() == deviceType and tempDevice.getOwner() == OwnerID):
+			if( tempDevice.getType() == deviceType and (tempDevice.getOwner() == OwnerID)):
 				tempDevice.turnOn()
 				if(tempDevice.getType() == 'lamp'):
 					self.simL.setLightOn()
-				return tempDevice
-		return None
+				tempDeviceList.append(tempDevice)
+		return tempDeviceList
 	
 	# 根据类型和拥有者来关闭设备，返回设备
 	def turnOffDeviceByTypeAndOwner(self, deviceType, OwnerID):
 		for tempDevice in self.deviceList:
-			if( tempDevice.getType() == deviceType and (tempDevice.getOwner() == OwnerID or tempDevice.getOwner() == -1) ):
+			if( tempDevice.getType() == deviceType and (tempDevice.getOwner() == OwnerID) ):
 				tempDevice.turnOff()
 				if(tempDevice.getType() == 'lamp'):
 					self.simL.setLightOff()

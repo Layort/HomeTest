@@ -191,20 +191,6 @@ class house:
 				return tempRoom.turnOffDeviceByType(deviceType)
 		return []
 
-	# 开启指定房间内 某人 指定设备类型的设备，返回设备列表
-	def turnOnDeviceByTypeOfMan(self, roomType, deviceType, ID):
-		for tempRoom in self.roomList:
-			if ( tempRoom.getType() == roomType ):
-				return tempRoom.turnOnDeviceByTypeOfMan(deviceType,ID)
-		return []
-		
-	# 关闭指定房间内 某人 的指定设备类型的设备，返回设备列表
-	def turnOffDeviceByTypeOfMan(self, roomType, deviceType, ID):
-		for tempRoom in self.roomList:
-			if ( tempRoom.getType() == roomType ):
-				return tempRoom.turnOffDeviceByTypeOfMan(deviceType,ID)
-		return []
-
 	# 开启指定房间内指定设备名的设备，返回对应设备
 	def turnOnDeviceByName(self, roomType, deviceName):
 		for tempRoom in self.roomList:
@@ -255,7 +241,20 @@ class house:
 		for tempRoom in self.roomList:
 			tempRoom.turnOffDeviceByTypeAndOwner(deviceType,ManID)
 	
-
+	# 开启指定房间内 某人 指定设备类型的设备，返回设备列表
+	def turnOnDeviceByTypeOfMan(self, roomType, deviceType, ID):
+		for tempRoom in self.roomList:
+			if ( tempRoom.getType() == roomType ):
+				return tempRoom.turnOnDeviceByTypeAndOwner(deviceType,ID)
+		return []
+		
+	# 关闭指定房间内 某人 的指定设备类型的设备，返回设备列表
+	def turnOffDeviceByTypeOfMan(self, roomType, deviceType, ID):
+		for tempRoom in self.roomList:
+			if ( tempRoom.getType() == roomType ):
+				return tempRoom.turnOffDeviceByTypeAndOwner(deviceType,ID)
+		return []
+	
 	# 获得距离最近的指定类型设备
 	def getNearDevice(self, posX, posY, deviceType):
 		import math

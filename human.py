@@ -21,16 +21,16 @@ class human:
 	# simT        =   temperatureSimulator(currentTime)
 	# inHome      =   True
 
-	roomDict    =   {
-		"livingRoom"           :           0,
-		"masterBedroom"        :           100,
-		"secondBedroom"        :           200,
-		"thirdBedroom"         :           300,
-		"bathroom"             :           400,
-		"kitchen"              :           500,
-		"diningRoom"           :           600,
-		"studyRoom"            :           700
-	}
+	#roomDict    =   {
+	#	"livingRoom"           :           0,
+	#	"masterBedroom"        :           100,
+	#	"secondBedroom"        :           200,
+	#	"thirdBedroom"         :           300,
+	#	"bathroom"             :           400,
+	#	"kitchen"              :           500,
+	#	"diningRoom"           :           600,
+	#	"studyRoom"            :           700
+	#}
 
 	# 初始化函数
 	def __init__(self, ID = -1, age = 25, vigour = 50, regular = 90, carefulness = 95, posX = 0, posY = 0, currentTime = time.mktime(time.strptime("2015 1 1 00:00:00", "%Y %m %d %H:%M:%S")) ):
@@ -105,6 +105,14 @@ class human:
 		if(tempDeviceList != []):
 			self.moveTo(tempDeviceList[0].getPosX(), tempDeviceList[0].getPosY())
 		return tempDeviceList
+	
+	# 打开属于某个人的某种类型的设备
+	def turnOnDeviceInRoomOfManSelf(self, deviceType ):
+		self.house.turnOnAllByDeviceTypeAndOnwner(self.ID, deviceType)
+
+	# 关闭属于某个人的某种类型的设备
+	def turnOffDeviceInRoomOfManSelf(self, deviceType ):
+		self.house.turnOffAllByDeviceTypeAndOnwner(self.ID, deviceType)
 
 	# 打开一个房间内的某类属于某人设备
 	def turnOnDeviceOfMan(self, roomType, deviceType, ID):
@@ -138,14 +146,6 @@ class human:
 	# 关闭指定类型的全部设备
 	def turnOffAllByDeviceType(self, deviceType, exceptRoomTypeList = []):
 		self.house.turnOffAllByDeviceType(deviceType, exceptRoomTypeList)
-
-	# 打开属于某个人的某种类型的设备
-	def turnOnDeviceInRoomOfManSelf(self, deviceType ):
-		self.house.turnOnAllByDeviceTypeAndOnwner(self.ID, deviceType)
-
-	# 关闭属于某个人的某种类型的设备
-	def turnOffDeviceInRoomOfManSelf(self, deviceType ):
-		self.house.turnOffAllByDeviceTypeAndOnwner(self.ID, deviceType)
 
 	# 移动到某位置
 	def moveTo(self, posX, posY):
